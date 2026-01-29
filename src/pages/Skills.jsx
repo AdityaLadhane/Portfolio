@@ -218,7 +218,7 @@ const Skills = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {category.skills.map((skill, index) => (
+                      {category.skills && category.skills.map((skill, index) => (
                         <motion.div
                           key={skill.name}
                           className="space-y-4 p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300 group"
@@ -292,7 +292,7 @@ const Skills = () => {
           </motion.div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-            {toolsData.map((tool, index) => (
+            {toolsData && toolsData.map((tool, index) => (
               <motion.div
                 key={tool.name}
                 className="glassmorphism-strong rounded-2xl p-6 text-center group hover:scale-105 hover:shadow-glow transition-all duration-500 cursor-pointer"

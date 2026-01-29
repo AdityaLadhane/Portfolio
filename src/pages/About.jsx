@@ -32,15 +32,15 @@ const About = () => {
   const tabContent = {
     journey: {
       title: 'The Curious Journey',
-      content: personalInfo.story.journey
+      content: personalInfo.story?.journey || ''
     },
     education: {
       title: 'Learning & Building',
-      content: personalInfo.story.education
+      content: personalInfo.story?.education || ''
     },
     philosophy: {
       title: 'Dreams & Philosophy',
-      content: personalInfo.story.philosophy
+      content: personalInfo.story?.philosophy || ''
     }
   };
 

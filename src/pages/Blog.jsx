@@ -336,7 +336,7 @@ const Blog = () => {
                       </p>
 
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {post.tags.slice(0, 3).map((tag) => (
+                        {post.tags && post.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
                             className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/80"
@@ -448,7 +448,7 @@ const Blog = () => {
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-                    {selectedPost.tags.map((tag) => (
+                    {selectedPost.tags && selectedPost.tags.map((tag) => (
                       <span
                         key={tag}
                         className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm text-white/90"
@@ -466,7 +466,7 @@ const Blog = () => {
                   {/* Article Content */}
                   {selectedPost.content ? (
                     <div className="space-y-12">
-                      {Object.entries(selectedPost.content).map(([sectionKey, sectionContent], index) => (
+                      {selectedPost.content && Object.entries(selectedPost.content).map(([sectionKey, sectionContent], index) => (
                         <motion.div
                           key={sectionKey}
                           className="glassmorphism rounded-2xl p-8"

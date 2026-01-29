@@ -295,7 +295,7 @@ const Projects = () => {
                       </p>
 
                       <div className="flex flex-wrap gap-2 mb-4">
-                        {project.technologies.slice(0, 3).map((tech) => (
+                        {project.technologies && project.technologies.slice(0, 3).map((tech) => (
                           <span
                             key={tech}
                             className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/80"
@@ -410,7 +410,7 @@ const Projects = () => {
                       Technologies Used
                     </h3>
                     <div className="flex flex-wrap gap-3">
-                      {selectedProject.technologies.map((tech) => (
+                      {selectedProject.technologies && selectedProject.technologies.map((tech) => (
                         <span
                           key={tech}
                           className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 rounded-2xl text-white/90 font-medium"
@@ -445,7 +445,7 @@ const Projects = () => {
                             Components & Hardware
                           </h3>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            {selectedProject.details.components.map((component, index) => (
+                            {selectedProject.details.components && selectedProject.details.components.map((component, index) => (
                               <div key={index} className="flex items-center p-3 bg-white/5 rounded-lg border border-white/10">
                                 <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 flex-shrink-0"></span>
                                 <span className="text-white/80">{component}</span>
@@ -517,7 +517,7 @@ const Projects = () => {
                           <div className="overflow-x-auto">
                             <table className="w-full border-collapse">
                               <tbody>
-                                {Object.entries(selectedProject.details.technicalSpecs).map(([key, value], index) => (
+                                {selectedProject.details.technicalSpecs && Object.entries(selectedProject.details.technicalSpecs).map(([key, value], index) => (
                                   <tr key={index} className={index % 2 === 0 ? 'bg-white/5' : 'bg-transparent'}>
                                     <td className="px-4 py-3 font-semibold text-white/90 border border-white/10 rounded-l-lg">
                                       {key}
