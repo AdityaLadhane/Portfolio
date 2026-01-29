@@ -9,6 +9,8 @@ export const personalInfoQuery = `*[_type == "personalInfo"][0]{
   name,
   title,
   bio,
+  age,
+  education,
   avatar,
   email,
   phone,
