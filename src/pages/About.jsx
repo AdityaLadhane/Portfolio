@@ -140,7 +140,7 @@ const About = () => {
               animate={heroVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.8 }}
             >
-              {personalInfo.currentFocus.slice(0, 3).map((focus, index) => (
+              {personalInfo.currentFocus && personalInfo.currentFocus.slice(0, 3).map((focus, index) => (
                 <motion.div
                   key={index}
                   className="px-4 py-2 glassmorphism rounded-full text-sm text-white/80"
@@ -241,7 +241,7 @@ const About = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {personalInfo.achievements.map((achievement, index) => {
+            {personalInfo.achievements && personalInfo.achievements.map((achievement, index) => {
               const IconComponent = iconComponents[achievement.icon];
               return (
                 <motion.div
@@ -295,7 +295,7 @@ const About = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {personalInfo.coreValues.map((value, index) => {
+            {personalInfo.coreValues && personalInfo.coreValues.map((value, index) => {
               const IconComponent = iconComponents[value.icon];
               return (
                 <motion.div
@@ -354,7 +354,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {personalInfo.futureDreams.map((dream, index) => (
+              {personalInfo.futureDreams && personalInfo.futureDreams.map((dream, index) => (
                 <motion.div
                   key={index}
                   className="flex items-center space-x-4 p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-all duration-300"
