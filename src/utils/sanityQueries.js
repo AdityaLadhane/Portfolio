@@ -1,6 +1,7 @@
 /**
  * GROQ queries for fetching data from Sanity CMS
  * Field names match the schema definitions exactly
+ * Updated: 2026-01-29 - Added age and education fields
  */
 
 // Personal Info Query (Singleton)
