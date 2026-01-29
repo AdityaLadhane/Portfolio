@@ -47,6 +47,8 @@ export function usePersonalInfo() {
     name,
     title,
     bio,
+    age,
+    education,
     avatar,
     email,
     phone,
