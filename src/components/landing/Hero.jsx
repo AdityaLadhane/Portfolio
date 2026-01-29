@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronDown, Zap, Camera, Cpu, Car } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { usePersonalInfo } from '../../hooks/useSanityData';
+import { getImageUrl } from '../../lib/sanity';
 
 const Hero = () => {
   const [isImageHovered, setIsImageHovered] = useState(false);
@@ -140,7 +141,7 @@ const Hero = () => {
             />
             
             <motion.img
-              src={personalInfo.avatar}
+              src={getImageUrl(personalInfo.avatar, 400)}
               alt={personalInfo.name}
               className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white/30 shadow-glass-lg backdrop-blur-sm"
               animate={{

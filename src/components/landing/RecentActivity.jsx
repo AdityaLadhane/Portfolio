@@ -4,6 +4,7 @@ import { Calendar, Cpu, Camera, Video, ExternalLink, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useFeaturedProjects, useRecentBlogPosts } from '../../hooks/useSanityData';
+import { getImageUrl } from '../../lib/sanity';
 
 const RecentActivity = () => {
   const { elementRef, isIntersecting } = useIntersectionObserver();
@@ -134,7 +135,7 @@ const RecentActivity = () => {
                   {/* Image */}
                   <div className="mb-6 overflow-hidden rounded-lg">
                     <img
-                      src={activity.image}
+                      src={getImageUrl(activity.image, 600)}
                       alt={activity.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />

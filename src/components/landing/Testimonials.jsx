@@ -3,6 +3,7 @@ import { Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTestimonials } from '../../hooks/useSanityData';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
+import { getImageUrl } from '../../lib/sanity';
 
 const Testimonials = () => {
   const { elementRef, isIntersecting } = useIntersectionObserver();
@@ -79,7 +80,7 @@ const Testimonials = () => {
                     {/* Author */}
                     <div className="flex items-center space-x-4">
                       <motion.img
-                        src={testimonial.avatar}
+                        src={getImageUrl(testimonial.avatar, 200)}
                         alt={testimonial.name}
                         className="w-14 h-14 rounded-full object-cover ring-2 ring-white/30 group-hover:ring-white/50 transition-all duration-300"
                         whileHover={{ scale: 1.1 }}
