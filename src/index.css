@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-100 bg-dark-950;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative px-8 py-4 bg-white/10 text-white rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none backdrop-blur-2xl shadow-lg hover:bg-white/15 hover:shadow-glow;
+  }
+  
+  .btn-secondary {
+    @apply relative px-8 py-4 bg-white/5 backdrop-blur-2xl text-white rounded-2xl font-medium hover:bg-white/10 transition-all duration-300 focus:outline-none shadow-lg;
+  }
+  
+  .btn-ghost {
+    @apply px-6 py-3 text-gray-300 rounded-2xl font-medium hover:bg-white/10 hover:text-white transition-all duration-300 focus:outline-none backdrop-blur-2xl;
+  }
+  
+  .card {
+    @apply bg-white/5 backdrop-blur-2xl rounded-3xl shadow-glass hover:shadow-glass-lg transition-all duration-500 transform hover:-translate-y-2 hover:bg-white/10;
+  }
+  
+  .glass {
+    @apply bg-white/10 backdrop-blur-2xl shadow-lg;
+  }
+  
+  .glass-strong {
+    @apply bg-white/15 backdrop-blur-3xl shadow-glass-lg;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent;
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .glow-text {
+    @apply text-white;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 60px rgba(59, 130, 246, 0.3);
+  }
+
+  .liquid-bg {
+    background: linear-gradient(135deg, 
+      rgba(15, 23, 42, 0.9) 0%,
+      rgba(30, 41, 59, 0.9) 25%,
+      rgba(51, 65, 85, 0.9) 50%,
+      rgba(71, 85, 105, 0.9) 75%,
+      rgba(15, 23, 42, 0.9) 100%);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+}
+
+/* Typewriter Effect */
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid #3b82f6;
+  white-space: nowrap;
+  animation: typewriter 4s steps(40) 1s forwards, blink 1s infinite 5s;
+}
+
+.typewriter::after {
+  content: '';
+  border-right: 3px solid #3b82f6;
+  animation: blink 1s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-950/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/20 rounded-full backdrop-blur-sm;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/30;
+}
+
+/* Glass morphism effects */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glassmorphism-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Liquid animations */
+.liquid-blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: blob 7s infinite;
+  filter: blur(1px);
+}
+
+/* Loading dots animation */
+.loading-dots {
+  @apply inline-flex space-x-1;
+}
+
+.loading-dots div {
+  @apply w-2 h-2 bg-white/60 rounded-full animate-bounce;
+}
+
+.loading-dots div:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loading-dots div:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+/* Scroll animations */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .typewriter {
+    font-size: clamp(2rem, 8vw, 4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    @apply py-16 px-4;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container-max {
+    @apply px-6;
+  }
+}
+
+/* Enhanced smooth scrolling for testimonials */
+@keyframes scroll-smooth {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+.scroll-smooth {
+  animation: scroll-smooth 45s linear infinite;
+}
+
+/* Prevent scroll lag */
+.testimonials-container {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
