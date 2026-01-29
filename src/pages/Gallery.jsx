@@ -3,6 +3,7 @@ import { Camera, MapPin, Calendar, Settings, X, ChevronLeft, ChevronRight, Downl
 import { motion, AnimatePresence } from 'framer-motion';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { galleryPhotos, galleryCategories } from '../data/placeholderData';
+import { getOptimizedImageUrl, getResponsiveSrcSet } from '../utils/imageHelpers';
 
 const Gallery = () => {
   const { elementRef: heroRef, isIntersecting: heroVisible } = useIntersectionObserver();
@@ -76,7 +77,7 @@ const Gallery = () => {
       <section ref={heroRef} className="section-padding liquid-bg relative overflow-hidden">
         {/* Enhanced Camera-themed floating particles */}
         <div className="absolute inset-0">
-          {Array.from({ length: 100 }, (_, i) => (
+          {Array.from({ length: 15 }, (_, i) => (
             <motion.div
               key={i}
               className={`absolute rounded-full backdrop-blur-sm ${
@@ -273,8 +274,11 @@ const Gallery = () => {
                   )}
 
                   <img
-                    src={photo.thumbnailUrl}
+                    src={getOptimizedImageUrl(photo.thumbnailUrl, 400, 75)}
+                    srcSet={getResponsiveSrcSet(photo.thumbnailUrl, [300, 400, 600], 75)}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     alt={photo.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     onLoadStart={() => handleImageLoadStart(photo.id)}
                     onLoad={() => handleImageLoad(photo.id)}
@@ -381,7 +385,9 @@ const Gallery = () => {
               {/* Image Container - Takes Maximum Space, No Overlays */}
               <div className="flex-1 flex items-center justify-center p-6 lg:p-8 min-h-0">
                 <img
-                  src={selectedPhoto.url}
+                  src={getOptimizedImageUrl(selectedPhoto.url, 1920, 90)}
+                  srcSet={getResponsiveSrcSet(selectedPhoto.url, [1280, 1920, 2560], 90)}
+                  sizes="(max-width: 1024px) 100vw, 90vw"
                   alt={selectedPhoto.title}
                   className="max-w-full max-h-full w-auto h-auto object-contain rounded-2xl shadow-2xl"
                 />

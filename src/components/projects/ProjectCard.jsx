@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink, Github, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { getOptimizedImageUrl, getResponsiveSrcSet } from '../../utils/imageHelpers';
 
 const ProjectCard = ({ project, onClick }) => {
   return (
@@ -13,8 +14,11 @@ const ProjectCard = ({ project, onClick }) => {
       {/* Project Image */}
       <div className="relative overflow-hidden">
         <img
-          src={project.thumbnail}
+          src={getOptimizedImageUrl(project.thumbnail, 600, 80)}
+          srcSet={getResponsiveSrcSet(project.thumbnail, [400, 600, 800], 80)}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt={project.title}
+          loading="lazy"
           className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
         />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">

@@ -3,6 +3,7 @@ import { ChevronDown, Zap, Camera, Cpu, Car } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { usePersonalInfo } from '../../hooks/useSanityData';
 import { getImageUrl } from '../../lib/sanity';
+import { getOptimizedImageUrl, getResponsiveSrcSet } from '../../utils/imageHelpers';
 
 const Hero = () => {
   const [isImageHovered, setIsImageHovered] = useState(false);
@@ -141,8 +142,12 @@ const Hero = () => {
             />
             
             <motion.img
-              src={getImageUrl(personalInfo.avatar, 400)}
+              src={getOptimizedImageUrl(personalInfo.avatar, 400, 90)}
+              srcSet={getResponsiveSrcSet(personalInfo.avatar, [200, 400, 600], 90)}
+              sizes="(max-width: 640px) 112px, 128px"
               alt={personalInfo.name}
+              loading="eager"
+              fetchpriority="high"
               className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover border-4 border-white/30 shadow-glass-lg backdrop-blur-sm"
               animate={{
                 borderColor: isImageHovered ? 'rgba(59,130,246,0.8)' : 'rgba(255,255,255,0.3)'

@@ -36,7 +36,7 @@ const Skills = () => {
       <section ref={heroRef} className="section-padding liquid-bg relative overflow-hidden">
         {/* Tech-themed floating particles */}
         <div className="absolute inset-0">
-          {Array.from({ length: 60 }, (_, i) => (
+          {Array.from({ length: 15 }, (_, i) => (
             <motion.div
               key={i}
               className={`absolute rounded-full backdrop-blur-sm ${
