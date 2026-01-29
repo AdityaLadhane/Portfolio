@@ -243,6 +243,8 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {personalInfo.achievements && personalInfo.achievements.map((achievement, index) => {
               const IconComponent = iconComponents[achievement.icon];
+              // Skip if icon component not found
+              if (!IconComponent) return null;
               return (
                 <motion.div
                   key={achievement.label}
@@ -297,6 +299,8 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {personalInfo.coreValues && personalInfo.coreValues.map((value, index) => {
               const IconComponent = iconComponents[value.icon];
+              // Skip if icon component not found
+              if (!IconComponent) return null;
               return (
                 <motion.div
                   key={value.title}

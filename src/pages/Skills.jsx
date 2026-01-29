@@ -157,6 +157,8 @@ const Skills = () => {
             {categoryKeys.map((key, index) => {
               const category = skillsData[key];
               const IconComponent = iconComponents[category.icon];
+              // Skip if icon component not found
+              if (!IconComponent) return null;
               
               return (
                 <motion.button
@@ -200,6 +202,8 @@ const Skills = () => {
               {(() => {
                 const category = skillsData[activeCategory];
                 const IconComponent = iconComponents[category.icon];
+                // Skip if icon component not found
+                if (!IconComponent) return null;
                 
                 return (
                   <>
