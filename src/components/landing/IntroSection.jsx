@@ -26,7 +26,7 @@ const IntroSection = () => {
     );
   }
 
-  const socialLinks = [
+  const socialLinks = personalInfo.socialMedia ? [
     { 
       icon: Linkedin, 
       href: personalInfo.socialMedia.linkedin, 
@@ -39,7 +39,7 @@ const IntroSection = () => {
       label: 'Instagram',
       color: 'hover:text-pink-400'
     },
-  ];
+  ].filter(link => link.href) : [];
 
   const interests = [
     { icon: Cpu, label: 'Electronics', color: 'text-blue-400' },
@@ -133,16 +133,18 @@ const IntroSection = () => {
                 I believe in building from scratch rather than modifying existing solutions.
               </p>
 
-              <div className="glassmorphism rounded-2xl p-6 inline-block">
-                <p className="text-blue-300 font-medium mb-2">Current Focus:</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {personalInfo.currentFocus.slice(0, 3).map((focus, index) => (
-                    <span key={index} className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">
-                      {focus}
-                    </span>
-                  ))}
+              {personalInfo.currentFocus && personalInfo.currentFocus.length > 0 && (
+                <div className="glassmorphism rounded-2xl p-6 inline-block">
+                  <p className="text-blue-300 font-medium mb-2">Current Focus:</p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {personalInfo.currentFocus.slice(0, 3).map((focus, index) => (
+                      <span key={index} className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80">
+                        {focus}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </motion.div>
 
