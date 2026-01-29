@@ -16,10 +16,39 @@ const Blog = () => {
   const { data: blogPosts, loading } = useBlogPosts();
 
   // Show minimal loading state
-  if (loading || !blogPosts) {
+  if (loading) {
     return (
       <div className="pt-16 min-h-screen flex items-center justify-center">
         <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  // Handle empty or null data from Sanity
+  if (!blogPosts || blogPosts.length === 0) {
+    return (
+      <div className="pt-16 min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-2xl mx-auto p-8">
+          <BookOpen className="w-16 h-16 text-white/30 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-white mb-4">Blog Posts Coming Soon</h2>
+          <p className="text-white/70 mb-6">
+            I'm preparing insightful articles about technology, innovation, photography, and my journey as a future entrepreneur. Stay tuned for thought-provoking content, or reach out to discuss ideas!
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="/contact"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-2xl transition-colors font-medium"
+            >
+              <span>Contact Me</span>
+            </a>
+            <a
+              href="/"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-2xl transition-colors font-medium"
+            >
+              <span>Back to Home</span>
+            </a>
+          </div>
+        </div>
       </div>
     );
   }

@@ -20,10 +20,51 @@ const Skills = () => {
   };
 
   // Show minimal loading state
-  if (skillsLoading || toolsLoading || !skillsData || !toolsData) {
+  if (skillsLoading || toolsLoading) {
     return (
       <div className="pt-16 min-h-screen flex items-center justify-center">
         <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  // Handle empty or null data from Sanity
+  if (!skillsData || Object.keys(skillsData).length === 0) {
+    return (
+      <div className="pt-16 min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-2xl mx-auto p-8">
+          <Code className="w-16 h-16 text-white/30 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-white mb-4">Skills Data Not Available</h2>
+          <p className="text-white/70 mb-6">
+            Skills information is being updated. Please check back soon or contact me directly to learn about my technical expertise.
+          </p>
+          <a
+            href="/contact"
+            className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-2xl transition-colors font-medium"
+          >
+            <span>Contact Me</span>
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  if (!toolsData || toolsData.length === 0) {
+    return (
+      <div className="pt-16 min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-2xl mx-auto p-8">
+          <Cpu className="w-16 h-16 text-white/30 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-white mb-4">Tools Data Not Available</h2>
+          <p className="text-white/70 mb-6">
+            Tools information is being updated. Please check back soon.
+          </p>
+          <a
+            href="/"
+            className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-2xl transition-colors font-medium"
+          >
+            <span>Back to Home</span>
+          </a>
+        </div>
       </div>
     );
   }
